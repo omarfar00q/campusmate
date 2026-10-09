@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "campusmate"
+version = "0.1.0"
+description = "CampusMate - AI College Assistant MCP Server"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "mcp>=2.3.0",
+    "fastapi>=0.115.0",
+    "uvicorn>=0.34.0",
+    "httpx>=0.28.0",
+    "sse-starlette>=2.2.0",
+    "sqlalchemy>=2.0.35",
+    "pydantic>=2.14.0",
+    "python-dotenv>=1.0.1",
+    "pytz>=2025.1",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["server*", "agent*", "data*"]
