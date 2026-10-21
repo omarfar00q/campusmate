@@ -7,6 +7,7 @@ name = "campusmate"
 version = "0.1.0"
 description = "CampusMate - AI College Assistant MCP Server"
 readme = "README.md"
+license = { text = "MIT" }
 requires-python = ">=3.11"
 dependencies = [
     "mcp>=2.3.0",
@@ -18,7 +19,14 @@ dependencies = [
     "pydantic>=2.14.0",
     "python-dotenv>=1.0.1",
     "pytz>=2025.1",
+    "openai>=1.50.0",
 ]
+
+[tool.setuptools.package-dir]
+"campusmate" = "."
+"campusmate.server" = "server"
+"campusmate.agent" = "agent"
+"campusmate.data" = "data"
 
 [tool.setuptools.packages.find]
 where = ["."]

@@ -19,14 +19,15 @@ COPY server/requirements.txt ./requirements.txt
 RUN pip install --no-cache-dir -r ./requirements.txt
 RUN pip install --no-cache-dir openai
 
-# Copy application source code
-COPY pyproject.toml pytest.ini ./
+# Copy application source code under /app/campusmate so `campusmate` package resolves
+WORKDIR /app/campusmate
+COPY pyproject.toml pytest.ini __init__.py ./
 COPY server/ ./server/
 COPY agent/ ./agent/
 COPY data/ ./data/
 COPY --from=frontend-builder /app/frontend/dist ./frontend/dist
 
-# Initialize seed data during build/start
+# Initialize environment
 ENV PYTHONUNBUFFERED=1
 ENV PYTHONPATH=/app
 
